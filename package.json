@@ -1,0 +1,11 @@
+{
+  "name": "microservices-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "gabriel-peruchi <gabriel-peruchi@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.15.29"
+  }
+}

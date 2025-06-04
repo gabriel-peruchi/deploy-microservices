@@ -1,0 +1,65 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "formatter": {
+    "enabled": true,
+    "indentWidth": 2,
+    "indentStyle": "space",
+    "formatWithErrors": true,
+    "ignore": [
+      "**/node_modules",
+      "**/dist"
+    ]
+  },
+  "javascript": {
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      },
+      "complexity": {
+        "noVoid": "error",
+        "noThisInStatic": "off",
+        "noStaticOnlyClass": "off",
+        "noUselessConstructor": "off",
+        "useSimplifiedLogicExpression": "error"
+      },
+      "performance": {
+        "noDelete": "off",
+        "noBarrelFile": "error"
+      },
+      "style": {
+        "useForOf": "error",
+        "useImportType": "off",
+        "noNegationElse": "error",
+        "noDefaultExport": "error",
+        "noInferrableTypes": "off",
+        "useCollapsedElseIf": "error"
+      },
+      "suspicious": {
+        "useAwait": "error",
+        "noExplicitAny": "off",
+        "noThenProperty": "off",
+        "noEmptyBlockStatements": "error"
+      }
+    },
+    "ignore": [
+      "**/node_modules",
+      "**/dist"
+    ]
+  }
+}
