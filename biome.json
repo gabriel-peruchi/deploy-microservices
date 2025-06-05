@@ -46,7 +46,7 @@
         "useForOf": "error",
         "useImportType": "off",
         "noNegationElse": "error",
-        "noDefaultExport": "error",
+        "noDefaultExport": "off",
         "noInferrableTypes": "off",
         "useCollapsedElseIf": "error"
       },
