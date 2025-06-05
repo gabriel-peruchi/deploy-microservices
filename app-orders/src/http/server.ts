@@ -6,7 +6,7 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { channels } from '../broker/channels/index.ts'
+import { dispacthOrderCreated } from '../broker/messages/order-created.ts'
 import { db } from '../db/client.ts'
 import { schema } from '../db/schema/index.ts'
 
@@ -31,16 +31,21 @@ server.post(
   async (request, reply) => {
     const { amount } = request.body
 
-    channels.orders.sendToQueue(
-      'orders',
-      Buffer.from(JSON.stringify({ amount })),
-    )
+    const orderId = crypto.randomUUID()
+    const customerId = '4950052d-b351-4ba6-9c8a-85d1de2d9b12'
 
     await db.insert(schema.orders).values({
-      id: crypto.randomUUID(),
+      id: orderId,
       amount,
-      status: 'pending',
-      customerId: '4950052d-b351-4ba6-9c8a-85d1de2d9b12',
+      customerId,
+    })
+
+    dispacthOrderCreated({
+      orderId,
+      amount,
+      customer: {
+        id: customerId,
+      },
     })
 
     return reply.status(200).send()
