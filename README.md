@@ -1,1 +1,1 @@
-# Deploy microservices with Pulumi
+# Microservices deploy with Pulumi
