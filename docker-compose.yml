@@ -8,16 +8,15 @@ services:
       - rabbitmq_data:/var/lib/rabbitmq
 
   api-gateway:
-    image: kong:3.9
+    build:
+      context: './docker/kong'
     environment:
       KONG_DATABASE: "off"
       KONG_ADMIN_LISTEN: "0.0.0.0:8001"
       KONG_ADMIN_GUI_URL: http://localhost:8002
-      KONG_DECLARATIVE_CONFIG: /kong/config.yml
+      ORDERS_SERVICE_URL: http://host.docker.internal:3333
     extra_hosts:
       - "host.docker.internal:host-gateway"  # Allows access to host services
-    volumes:
-      - ./docker/kong/config.yml:/kong/config.yml  # Custom Kong configuration
     ports:
       - "8000:8000"  # Kong proxy port
       - "8001:8001"  # Kong admin API port
